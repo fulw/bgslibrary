@@ -8,7 +8,7 @@ A Background Subtraction Library
 
 <p align="center">
 <a href="https://youtu.be/_UbERwuQ0OU" target="_blank">
-<img src="https://raw.githubusercontent.com/andrewssobral/bgslibrary/master/docs/images/bgs_giphy2_box.gif" border="0" />
+<img src="https://raw.githubusercontent.com/fulw/bgslibrary/main/docs/images/bgs_giphy2_box.gif" border="0" />
 </a>
 </p>
 
