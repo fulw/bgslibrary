@@ -123,7 +123,8 @@ namespace bgslibrary
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
-  ui(new Ui::MainWindow)
+  ui(new Ui::MainWindow),
+  boxDetector(50, 100)
 {
   ui->setupUi(this);
   //QDir applicationPath(QCoreApplication::applicationDirPath());
@@ -409,6 +410,12 @@ void MainWindow::processFrame(const cv::Mat &cv_frame)
   bgs->process(cv_frame, cv_fg, cv_bg);
   toc();
   ui->label_fps_txt->setText(QString::fromStdString(to_string(fps())));
+
+  auto boxes = boxDetector.Detect(cv_fg);
+  cv::cvtColor(cv_fg, cv_fg, cv::COLOR_GRAY2BGR);
+  for (auto box : boxes) {
+      cv::rectangle(cv_fg, cv::Point(box.x1, box.y1), cv::Point(box.x2, box.y2), cv::Scalar(0, 0, 255), 3);
+  }
 
   cv::Mat cv_fg_small;
   cv::resize(cv_fg, cv_fg_small, cv::Size(250, 250));

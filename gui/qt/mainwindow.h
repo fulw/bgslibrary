@@ -28,6 +28,7 @@
 #include "qt_utils.h"
 #include "texteditor.h"
 #include "../../src/algorithms/algorithms.h"
+#include "../../src/tools/BoxDetector.h"
 
 namespace bgslibrary
 {
@@ -97,6 +98,7 @@ private:
   double fps();
   int capture_length = 0;
   TextEditor textEditor;
+  bgslibrary::tools::BoxDetector boxDetector;
 
   public slots:
   void startCapture();
