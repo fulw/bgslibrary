@@ -1,3 +1,6 @@
+## Note
+This repo is a copy of https://github.com/andrewssobral/bgslibrary. I added [BoxDetector](https://github.com/fulw/bgslibrary/blob/main/src/tools/BoxDetector.cpp) for parsing boxes from masks.
+
 ## BGSLibrary
 A Background Subtraction Library
 
