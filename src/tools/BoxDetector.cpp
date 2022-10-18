@@ -2,6 +2,9 @@
 // Created by levin on 2022/7/8.
 //
 #include <algorithm>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "BoxDetector.h"
 
 using namespace bgslibrary::tools;
@@ -27,6 +30,13 @@ Box Box::merge(const Box &other) const {
             std::max(x2, other.x2),
             std::max(y2, other.y2)
             };
+}
+
+void Box::multiply(double scale) {
+    x1 = (int) (x1 * scale);
+    y1 = (int) (y1 * scale);
+    x2 = (int) (x2 * scale);
+    y2 = (int) (y2 * scale);
 }
 
 BoxDetector::BoxDetector(int mergeDist, int minSize): mergeDist(mergeDist), minSize(minSize) {}
@@ -88,4 +98,21 @@ std::list<Box> BoxDetector::mergeBoxes(std::list<Box>& boxes) {
         }
     }
     return boxes;
+}
+
+
+bool BoxDetector::saveBoxes(std::list<Box>& boxes, std::string fpath) {
+    if (boxes.size() == 0) {
+        return true;
+    }
+    std::ofstream file(fpath);
+    if (file.is_open())
+    {
+        for (auto box : boxes) {
+            file << box.x1 << " " << box.y1 << " " << box.x2 << " " << box.y2 << "\n";
+        }
+        file.close();
+        return true;
+    }
+    return false;
 }

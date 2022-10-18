@@ -25,6 +25,9 @@ _*
 *.includes
 *.egg-info/
 .vscode/
+.idea/
 bgslibrary_gui
 .pypirc
 upload.sh
+cmake-build-debug/
+examples/CMakeFiles/

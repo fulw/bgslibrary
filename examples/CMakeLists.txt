@@ -78,6 +78,7 @@ endif()
 
 file(GLOB demo Demo.cpp)
 file(GLOB demo2 Demo2.cpp)
+file(GLOB demo3 Demo3.cpp)
 
 file(GLOB_RECURSE tools_src ../src/tools/*.cpp ../src/tools/*.c)
 file(GLOB_RECURSE tools_inc ../src/tools/*.h ../src/tools/*.hpp)
@@ -129,6 +130,9 @@ target_link_libraries(bgs_demo ${OpenCV_LIBS} bgslibrary_core)
 
 add_executable(bgs_demo2 ${demo2})
 target_link_libraries(bgs_demo2 ${OpenCV_LIBS} bgslibrary_core)
+
+add_executable(bgs_demo3 ${demo3})
+target_link_libraries(bgs_demo3 ${OpenCV_LIBS} bgslibrary_core)
 
 if(UNIX)
   # to avoid: error while loading shared libraries: libbgslibrary_core.so

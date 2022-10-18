@@ -20,6 +20,7 @@ namespace bgslibrary
             explicit Box(cv::Rect rect): Box(rect.x, rect.y, rect.x + rect.width, rect.y + rect.height){}
             int distance(const Box &other) const;
             Box merge(const Box &other) const;
+            void multiply(double scale);
             int width() const;
             int height() const;
         };
@@ -30,6 +31,8 @@ namespace bgslibrary
             BoxDetector(int mergeDist, int minSize);
 
             std::list<Box> Detect(const cv::Mat &mask);
+
+            bool saveBoxes(std::list<Box> &boxes, std::string fpath);
 
         private:
             int mergeDist = 30;
